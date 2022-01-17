@@ -26,11 +26,14 @@ class Todo {
 }
 
 /* FUNCTIONS */
-
-const renderList = () => {
+const updateIndex = (todos) => {
   todos.forEach((element, index) => {
     element.index = index + 1;
   });
+};
+
+function renderList() {
+  updateIndex(todos);
   todoList.innerHTML = '';
   for (let i = 0; i < todos.length; i += 1) {
     const content = `
@@ -47,7 +50,7 @@ const renderList = () => {
     `;
     todoList.innerHTML += content;
   }
-};
+}
 
 renderList();
 
@@ -125,6 +128,7 @@ todoList.addEventListener('input', (event) => {
 
 removeCompleted.addEventListener('click', () => {
   todos = todos.filter((element) => element.completed !== true);
+  updateIndex(todos);
   localStorage.setItem('todosStore', JSON.stringify(todos));
   renderList();
 });
