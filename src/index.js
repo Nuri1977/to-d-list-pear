@@ -11,6 +11,7 @@ if (localTodos) {
 }
 
 const todoList = document.getElementById('todo-list');
+const addForm = document.getElementById('form');
 const addBtn = document.getElementById('add-btn');
 const addInput = document.getElementById('todo-input');
 const removeCompleted = document.getElementById('remove-completed');
@@ -51,18 +52,13 @@ const renderList = () => {
 renderList();
 
 /*  EVENT LISTENERS add */
-addBtn.addEventListener('click', () => {
+addForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  console.log(event);
   addTodo(addInput, todos, Todo);
   addInput.value = '';
   localStorage.setItem('todosStore', JSON.stringify(todos));
   renderList();
-});
-
-addInput.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    addBtn.click();
-  }
 });
 
 /*  EVENT LISTENERS remove */

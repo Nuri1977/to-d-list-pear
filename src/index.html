@@ -12,12 +12,12 @@
     <h1>Today's To Do</h1>
     <div class="card">
       <h4 class="card-item">Demo<i class="fas fa-sync-alt"></i></h4>
-      <div class="card-item">
+      <form id="form" action="/" class="card-item">
         <input id="todo-input" class="input-task" type="text" placeholder="Add to your list..." required>
-        <div id="add-btn">
+        <button id="add-btn" type="submit">
           <i class="fas fa-plus"></i>
-        </div>
-      </div>
+        </button>
+      </form>
       <ul id="todo-list" class="card-ul">
       </ul>
       <div class="card-item btn-item">
