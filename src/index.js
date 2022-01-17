@@ -64,12 +64,11 @@ addForm.addEventListener('submit', (event) => {
 /*  EVENT LISTENERS remove */
 
 todoList.addEventListener('click', (event) => {
-  const listItem = event.target;
-  const listId = (listItem.id);
-  const deleteId = listId.substring(4);
-  const test = listId.startsWith('list');
-  if (test === true) {
-    listItem.remove();
+  const deleteBtn = event.target;
+  const deleteId = event.target.id;
+  console.log(deleteBtn);
+  console.log(deleteId);
+  if (deleteBtn.classList.contains('delete')) {
     todos = todos.filter((element) => element.index !== +deleteId);
     localStorage.setItem('todosStore', JSON.stringify(todos));
     renderList();
@@ -106,10 +105,12 @@ todoList.addEventListener('focusout', (event) => {
   if (inputField.classList.contains('input-task1')) {
     const editBtn = listItem.childNodes[5];
     const deleteBtn = listItem.childNodes[7];
-    editBtn.classList.remove('hidden');
-    deleteBtn.classList.add('hidden');
-    inputField.classList.remove('textedit');
-    inputField.readOnly = true;
+    setTimeout(() => {
+      editBtn.classList.remove('hidden');
+      deleteBtn.classList.add('hidden');
+      inputField.classList.remove('textedit');
+      inputField.readOnly = true;
+    }, 500);
   }
 });
 
